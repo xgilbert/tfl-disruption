@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "0e6102b8-edde-4303-8516-e2873d39cfbb",
+		"name": "tfl-disruption",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"xavier\",\n\t\"password\": \"1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5555/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5555",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/tasks (one line)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"schedule_time\": \"2022-01-25T20:00:00\",\n    \"lines\": \"victoria\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5555/tasks",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/tasks (multiple lines)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"schedule_time\": \"2022-01-24T08:34:00\",\n    \"lines\": \"victoria,central,metropolitan\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5555/tasks",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/tasks (no schedule_time)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"lines\": \"victoria,central,metropolitan\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5555/tasks",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5555/tasks",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/tasks/<id>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5555/tasks/2",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"tasks",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/tasks/<id>",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5555/tasks/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/tasks",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"schedule_time\": \"2022-01-25T21:00:00\",\n    \"lines\": \"jubilee\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5555/tasks/2",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"tasks",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/disruptions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"category\": \"RealTime\",\n\t\"description\": \"Bakerloo Line: Minor delays between Queen's Park and Harrow & Wealdstone due to an earlier signal failure at Maida Vale. GOOD SERVICE on the rest of the line. \",\n    \"task_id\": \"2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5555/disruptions",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5555",
+					"path": [
+						"disruptions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

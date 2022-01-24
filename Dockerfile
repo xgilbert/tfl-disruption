@@ -18,6 +18,11 @@ COPY . .
 
 # WORKDIR /app/api
 
-# EXPOSE 80
+EXPOSE 80
+EXPOSE 5555
 
 # CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+
+ENTRYPOINT ["python"]
+
+CMD ["app.py"]

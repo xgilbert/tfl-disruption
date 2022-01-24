@@ -51,9 +51,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:5555/tasks",
+					"raw": "http://127.0.0.1:5555/tasks",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "5555",
 					"path": [
@@ -78,9 +82,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:5555/tasks",
+					"raw": "http://127.0.0.1:5555/tasks",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "5555",
 					"path": [
@@ -105,9 +113,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:5555/tasks",
+					"raw": "http://127.0.0.1:5555/tasks",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "5555",
 					"path": [
@@ -123,9 +135,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:5555/tasks",
+					"raw": "http://127.0.0.1:5555/tasks",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "5555",
 					"path": [
@@ -141,9 +157,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:5555/tasks/2",
+					"raw": "http://127.0.0.1:5555/tasks/2",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "5555",
 					"path": [
@@ -160,9 +180,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:5555/tasks/1",
+					"raw": "http://127.0.0.1:5555/tasks/1",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "5555",
 					"path": [
@@ -188,9 +212,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:5555/tasks/2",
+					"raw": "http://127.0.0.1:5555/tasks/2",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "5555",
 					"path": [

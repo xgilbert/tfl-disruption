@@ -5,15 +5,11 @@ class TaskModel(db.Model):
     __tablename__ = "tasks"
 
     id = db.Column(db.Integer, primary_key=True)
-    # task_id = db.Column(db.Integer, primary_key=True)
-    # task_id = db.Column(db.String(80))
     schedule_time = db.Column(db.String(80))
     lines = db.Column(db.String(120))
-    disruption = db.relationship("DisruptionModel", backref="tasks", lazy=True, uselist=False)
-    # disruption = db.relationship("DisruptionModel", lazy=True)
-    # disruption = db.relationship("DisruptionModel", lazy="dynamic")
-    # disruption = db.relationship("DisruptionModel", backref="tasks", lazy="dynamic")
-    # items = db.relationship('ItemModel', lazy='dynamic')
+    disruption = db.relationship(
+        "DisruptionModel", backref="tasks", lazy=True, uselist=False
+        )
 
     def __init__(self, schedule_time, lines):
         self.schedule_time = schedule_time
@@ -42,6 +38,7 @@ class TaskModel(db.Model):
     def find_all(cls):
         return cls.query.all()
 
-    # @classmethod
-    # def find_by_username(cls, username):
-    #     return cls.query.filter_by(username=username).first()
+    @classmethod
+    def find_by_username(cls, username):
+        # return cls.query.filter_by(username=username).first()
+        raise NotImplementedError

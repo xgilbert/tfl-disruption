@@ -6,13 +6,8 @@ class DisruptionModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     task_id = db.Column(db.Integer, db.ForeignKey("tasks.id"), nullable=False)
-    # store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
     category = db.Column(db.String(80))
     description = db.Column(db.String(250))
-    # task_id = db.Column(db.Integer, db.ForeignKey("tasks.id"))
-    # task = db.relationship("TaskModel")
-    # store_id = db.Column(db.Integer, db.ForeignKey('stores.id'))
-    # store = db.relationship('StoreModel')
 
     def __init__(self, category, description, task_id):
         self.category = category
@@ -22,6 +17,7 @@ class DisruptionModel(db.Model):
     def json(self):
         return {
             "id": self.id,
+            "task_id": self.task_id,
             "category": self.category,
             "description": self.description
         }
@@ -38,8 +34,11 @@ class DisruptionModel(db.Model):
     def find_by_id(cls, _id):
         return cls.query.filter_by(id=_id).first()
 
-    # @TODO
-    # @classmethod
-    # def find_by_task_id(cls, _id):
-    #     return cls.query.filter_by(id=_id).first()
+    @classmethod
+    def find_by_task_id(cls, _id):
+        return cls.query.filter_by(task_id=_id).first()
+
+    @classmethod
+    def find_all(cls):
+        return cls.query.all()
 

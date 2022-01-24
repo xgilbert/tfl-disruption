@@ -5,8 +5,8 @@ from db import db
 from resources.disruption import DisruptionCreate
 from resources.welcome import Welcome
 from resources.user import UserRegister
-from resources.task import Task, TaskList, TaskCreate
-from resources.disruption import DisruptionCreate
+from resources.task import Task, TaskCreate, TaskList
+from resources.disruption import Disruption, DisruptionCreate, DisruptionList
 
 
 app = Flask(__name__)
@@ -27,10 +27,12 @@ def create_tables():
 
 api.add_resource(Welcome, "/")
 api.add_resource(UserRegister, "/register")
-api.add_resource(TaskCreate, '/tasks')
+api.add_resource(TaskCreate, "/tasks")
 api.add_resource(TaskList, "/tasks")
-api.add_resource(Task, '/tasks/<int:task_id>')
-api.add_resource(DisruptionCreate, '/disruptions')
+api.add_resource(Task, "/tasks/<int:task_id>")
+api.add_resource(DisruptionCreate, "/disruptions")
+api.add_resource(DisruptionList, "/disruptions")
+api.add_resource(Disruption, "/disruptions/<int:task_id>")
 
 
 if __name__ == "__main__":

@@ -1,17 +1,20 @@
 from flask_restful import Resource, reqparse
-from models.task import TaskModel
 
+from models.task import TaskModel
+from controller import Controller
+
+task_controller = Controller()
 
 class Task(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument(
-        'schedule_time',
+        "schedule_time",
         type=str,
         required=False,
         help="If None, task run immediately."
         )
     parser.add_argument(
-        'lines',
+        "lines",
         type=str,
         required=True,
         help="This field cannot be blank."
@@ -22,7 +25,7 @@ class Task(Resource):
         task = TaskModel.find_by_id(task_id)
         if task:
             return task.json()
-        return {'message': 'Task not found'}, 404
+        return {"message": "Task not found"}, 404
 
     @classmethod
     def put(cls, task_id):
@@ -31,6 +34,7 @@ class Task(Resource):
 
         if task:
             task.schedule_time = data["schedule_time"]
+            # @TODO case if task has been run already
             task.lines = data["lines"]
         else:
             task = TaskModel(task_id, **data)
@@ -44,19 +48,19 @@ class Task(Resource):
         task = TaskModel.find_by_id(task_id)
         if task:
             task.delete_from_db()
-        return {'message': 'Task deleted successfully.'}
+        return {"message": " deleted successfully."}, 200
 
 
 class TaskCreate(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument(
-        'schedule_time',
+        "schedule_time",
         type=str,
         required=False,
         help="If None, task run immediately."
         )
     parser.add_argument(
-        'lines',
+        "lines",
         type=str,
         required=True,
         help="This field cannot be blank."
@@ -66,20 +70,18 @@ class TaskCreate(Resource):
     def post(cls):
         data = Task.parser.parse_args()
 
-        # if TasksModel.find_by_id(data['username']):
-        #     return {"message": "A user with that username already exists"}, 400
-
         # @TODO check that line id is valid
+        
+        # if no schedule_time then run immediately
+        if data["schedule_time"] is None:
+            data["schedule_time"] = "now"
 
-        # @TODO run immediately
-        if data['schedule_time'] is None:
-            data['schedule_time'] = "hello"
-
-        task = TaskModel(data['schedule_time'], data['lines'])
+        task = TaskModel(data["schedule_time"], data["lines"])
         task.save_to_db()
 
-        # schedule task
-        # task ...
+        # run/schedule task
+        # task_controller.run_task(task)
+        task_controller.schedule_task(task)        
 
         return {"message": "Task created successfully."}, 201
 
@@ -87,5 +89,5 @@ class TaskCreate(Resource):
 class TaskList(Resource):
     @classmethod
     def get(cls):
+        # @TODO add disruptions for tasks that have been run
         return {"tasks": [task.json() for task in TaskModel.find_all()]}
-
